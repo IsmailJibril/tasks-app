@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <h1>My Tasks</h1>
+            <p class="date" id="today-date"></p>
+        </header>
+
+        <!-- Progress -->
+        <section class="progress-card">
+            <div class="progress-info">
+                <span>Today's Progress</span>
+                <span id="progress-text">0/0</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </section>
+
+        <!-- Task List -->
+        <section class="task-list" id="task-list">
+            <!-- Tasks will be added here dynamically -->
+            <div class="empty-state">
+                <p>No tasks yet. Add your first task!</p>
+            </div>
+        </section>
+
+        <!-- Add Task Button -->
+        <button class="fab" id="fab-btn" title="Add task">+</button>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
