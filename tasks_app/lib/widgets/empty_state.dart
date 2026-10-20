@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class EmptyState extends StatelessWidget {
-  const EmptyState({super.key});
+  final String message;
+
+  const EmptyState({super.key, this.message = 'No tasks yet.\nTap + to add your first task!'});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class EmptyState extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           Text(
-            'No tasks yet.\nTap + to add your first task!',
+            message,
             textAlign: TextAlign.center,
             style: theme.textTheme.bodyLarge?.copyWith(
               color: theme.colorScheme.outline,

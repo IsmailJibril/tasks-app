@@ -33,17 +33,43 @@ class TaskCard extends StatelessWidget {
       onDismissed: (_) => onDelete(),
       child: Card(
         margin: const EdgeInsets.only(bottom: 8),
-        child: CheckboxListTile(
-          value: task.isDone,
-          onChanged: (_) => onToggle(),
+        child: ListTile(
+          onTap: onToggle,
+          leading: Checkbox(
+            value: task.isDone,
+            onChanged: (_) => onToggle(),
+          ),
           title: Text(
             task.title,
             style: TextStyle(
               decoration: task.isDone ? TextDecoration.lineThrough : null,
               color: task.isDone ? theme.colorScheme.outline : null,
+              fontWeight:
+                  task.isImportant && !task.isDone ? FontWeight.w600 : null,
             ),
           ),
-          controlAffinity: ListTileControlAffinity.leading,
+          subtitle: task.isImportant
+              ? Text(
+                  'Important',
+                  style: TextStyle(
+                    color: Colors.amber.shade700,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                )
+              : null,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (task.isImportant)
+                Icon(Icons.star_rounded, color: Colors.amber.shade700),
+              IconButton(
+                icon: const Icon(Icons.delete_outline),
+                onPressed: onDelete,
+                tooltip: 'Delete',
+              ),
+            ],
+          ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
